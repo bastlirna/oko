@@ -1,0 +1,27 @@
+﻿[
+  {
+    "name": "b09-mucirna",
+    "description": "Kamera v hlavní místnosti Mučírny",
+    "room": "Blok 9/S127",
+    "zone": "b09.mucirna.mg"
+  },
+  {
+    "name": "b09-mucirna2",
+    "description": "Kamera v mechadílně Mučírny",
+    "room": "Blok 9/S127",
+    "zone": "b09.mucirna.mg"
+  },
+  {
+    "name": "b09-mucirna-3d",
+    "description": "Kamera u 3D tiskárny",
+    "room": "Blok 9/S127",
+    "zone": "b09.mucirna.3d"
+  },
+  {
+    "name": "b10-posilovna",
+    "description": "Fake kamera",
+    "room": "Blok 10/x",
+    "zone": "b10"
+  }
+
+]

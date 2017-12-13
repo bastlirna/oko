@@ -1,0 +1,93 @@
+﻿
+.timeline-box {
+
+  margin: 10px 14px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+}
+
+.timeline-cams {
+  cursor: default;
+}
+
+.timeline-cams .cam {
+  position: relative;
+  height: 30px;
+
+  background-color: #eee;
+  border-bottom: solid 1px #fff;
+}
+
+.timeline-cams .cam span {
+  position: absolute;
+  font-size: 11px;
+  top: 7px;
+  left: 5px;
+}
+
+.timeline-cams .cam div {
+  margin: 0 10px 0 120px;
+  height: 5px;
+}
+
+.timeline-footer {
+  position: relative;
+  margin: 0 10px 0 120px;
+  height: 18px;
+}
+
+.timeline-footer i {
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 3px;
+  background-color: #ccc;
+  top: 0;
+}
+
+.timeline-footer b {
+  position: absolute;
+  display: block;
+  width: 30px;
+  top: 2px;
+  font-size: 10px;
+  font-weight: normal;
+  color: #ccc;
+}
+
+.timeline-footer b span {
+  position: absolute;
+  display: block;
+  width: 30px;
+  top: 0;
+  left: -15px;
+  font-size: 10px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.timeline-header {
+  position: relative;
+  margin: 0 10px 0 120px;
+  height: 6px;
+  z-index: 1;
+}
+
+.timeline-header b {
+  position: absolute;
+  display: block;
+  width: 20px;
+  top: -6px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #ccc;
+}
+
+.timeline-header b span {
+  position: absolute;
+  display: block;
+  width: 20px;
+  left: -10px;
+  text-align: center;
+}

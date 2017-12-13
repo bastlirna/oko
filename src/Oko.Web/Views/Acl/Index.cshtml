@@ -1,0 +1,28 @@
+﻿@model System.Collections.Generic.IEnumerable<Oko.Web.Authorization.AclItem>
+
+<h2>ACL</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Uživatel</th>
+            <th>Role</th>
+            <th>Zóny</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@string.Join(", ", user.Roles)</td>
+                <td>
+                    @foreach (var z in user.Zones)
+                    {
+                        <code>@z</code>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

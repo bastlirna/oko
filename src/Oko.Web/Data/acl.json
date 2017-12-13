@@ -1,0 +1,21 @@
+﻿{
+  "horcicaa": {
+    "roles": [ "admin" ],
+    "zones": [ "b09.mucirna.3d", "b10.*" ]
+  },
+
+  "vsuk": {
+    "roles": [ "admin" ],
+    "zones": [ "*" ]
+  },
+
+  "pvitvar": {
+    "roles": [],
+    "zones": [ "b09.mucirna.3d" ]
+  },
+
+  "ppolasek": {
+    "roles": [],
+    "zones": [ "b09.mucirna.*", "b10.*" ]
+  }
+}

@@ -1,0 +1,76 @@
+﻿@using System.Globalization
+@model IEnumerable<Oko.Logic.Contract.Dto.CameraDefinition>
+
+@{
+    ViewData["Title"] = "Archiv";
+}
+
+<div class="row" style="margin-top: 12px;">
+    <div class="col-md-10">
+        <form class="form-inline">
+            <div class="form-group form-group-sm">
+                <input type="text" class="form-control" id="exampleInputName2" placeholder="08.01.2017">
+
+                <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-2 text-right">
+        <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-zoom-out"></span></button>
+        <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-zoom-in"></span></button>
+        <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-fullscreen"></span></button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="timeline-box">
+        <div class="timeline-cams">
+            <div class="timeline-header">
+                <b style="left: 10%"><span>&#9660;</span></b>
+            </div>
+
+            @foreach (var c in Model)
+            {
+                <div class="cam">
+                    <span>@c.Name</span>
+                    <div class=""></div>
+                </div>
+            }
+
+        </div>
+
+        <div class="timeline-footer">
+            @for (int i = 0; i <= 24; i++)
+            {
+                <i style="left: @((i*100/24d).ToString("f", CultureInfo.InvariantCulture))%;"></i>
+                <b style="left: @((i*100/24d).ToString("f", CultureInfo.InvariantCulture))%;"><span>@i</span></b>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-step-backward"></span> Minuta</button>
+        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-backward"></span> Snímek</button>
+        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-backward"></span> Událost</button>
+    </div>
+    <div class="col-md-4 text-center">
+        12:02:53
+    </div>
+    <div class="col-md-4 text-right">
+        <button class="btn btn-xs btn-default">Událost <span class="glyphicon glyphicon-forward"></span></button>
+        <button class="btn btn-xs btn-default">Snímek <span class="glyphicon glyphicon-forward"></span></button>
+        <button class="btn btn-xs btn-default">Minuta <span class="glyphicon glyphicon-step-forward"></span></button>
+    </div>
+</div>
+
+
+<div class="row">
+    kamery
+</div>
+
+
+
+

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Oko.Logic.Contract.Dto.CameraDefinition>
+
+<h2>Kamery</h2>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Název</th>
+        <th>Místnost</th>
+        <th>Zóna</th>
+        <th>Popis</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var cam in Model)
+        {
+            <tr>
+                <td>@cam.Name</td>
+                <td>@cam.Room</td>
+                <td><code>@cam.Zone</code></td>
+                <td>@cam.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{ADB8DB32-222E-461C-905C-F14842939B7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B557C3C6-D34D-4190-82DB-E6BD66E9B80A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{33CC75F6-A9B4-4D0E-9D34-32ED0DF797AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oko.Web", "Oko.Web\Oko.Web.csproj", "{67847CB5-2D75-4BA2-A307-36EF395BC369}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oko.IsOAuthProvider", "Oko.IsOAuthProvider\Oko.IsOAuthProvider.csproj", "{F33B07ED-AD4A-4A10-A87D-635826F9D959}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oko.Logic.Contract", "Oko.Logic.Contract\Oko.Logic.Contract.csproj", "{C4CBDA49-E000-4763-8A59-2C16EA7C9C59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oko.Logic.Core", "Oko.Logic.Core\Oko.Logic.Core.csproj", "{C46161EA-DFA3-483C-9D3E-858E8AFAF139}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67847CB5-2D75-4BA2-A307-36EF395BC369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67847CB5-2D75-4BA2-A307-36EF395BC369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67847CB5-2D75-4BA2-A307-36EF395BC369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67847CB5-2D75-4BA2-A307-36EF395BC369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F33B07ED-AD4A-4A10-A87D-635826F9D959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F33B07ED-AD4A-4A10-A87D-635826F9D959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F33B07ED-AD4A-4A10-A87D-635826F9D959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F33B07ED-AD4A-4A10-A87D-635826F9D959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4CBDA49-E000-4763-8A59-2C16EA7C9C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4CBDA49-E000-4763-8A59-2C16EA7C9C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4CBDA49-E000-4763-8A59-2C16EA7C9C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CBDA49-E000-4763-8A59-2C16EA7C9C59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46161EA-DFA3-483C-9D3E-858E8AFAF139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46161EA-DFA3-483C-9D3E-858E8AFAF139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46161EA-DFA3-483C-9D3E-858E8AFAF139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46161EA-DFA3-483C-9D3E-858E8AFAF139}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{67847CB5-2D75-4BA2-A307-36EF395BC369} = {B557C3C6-D34D-4190-82DB-E6BD66E9B80A}
+		{F33B07ED-AD4A-4A10-A87D-635826F9D959} = {B557C3C6-D34D-4190-82DB-E6BD66E9B80A}
+		{C4CBDA49-E000-4763-8A59-2C16EA7C9C59} = {ADB8DB32-222E-461C-905C-F14842939B7E}
+		{C46161EA-DFA3-483C-9D3E-858E8AFAF139} = {ADB8DB32-222E-461C-905C-F14842939B7E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65B54F3E-F251-4143-A6DC-205CA178AB59}
+	EndGlobalSection
+EndGlobal
