@@ -339,7 +339,10 @@ app.controller("archive", function ($scope, $http, moment) {
     $scope.loaded = function (camera) {
         if (camera.image != 'no-image') {
             camera.style = $scope.calcStyle(camera.image.time);
+        } else {
+            camera.style = 'no-image';
         }
+
     }
 
     $scope.init = function () {
