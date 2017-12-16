@@ -4,73 +4,117 @@
 @{
     ViewData["Title"] = "Archiv";
 }
+<div ng-controller="archive" ng-init="init()" ng-class="{debug: debug != false}">
+    <div class="row" style="margin-top: 12px;">
+        <div class="col-md-10 col-xs-10 col-sm-10">
+            <form class="form-inline">
+                <div class="form-group form-group-sm">
 
-<div class="row" style="margin-top: 12px;">
-    <div class="col-md-10">
-        <form class="form-inline">
-            <div class="form-group form-group-sm">
-                <input type="text" class="form-control" id="exampleInputName2" placeholder="08.01.2017">
+                    <input type='text'
+                           class="form-control day-input"
+                           moment-picker="cursorTimeFormatted"
+                           format="YYYY-MM-DD"
+                           start-view="month"
+                           max-view="month"
+                           ng-model="cursorTime"
+                           change="load()" />
 
-                <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
-                <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-2 text-right">
-        <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-zoom-out"></span></button>
-        <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-zoom-in"></span></button>
-        <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-fullscreen"></span></button>
-    </div>
-</div>
-
-<div class="row">
-    <div class="timeline-box">
-        <div class="timeline-cams">
-            <div class="timeline-header">
-                <b style="left: 10%"><span>&#9660;</span></b>
-            </div>
-
-            @foreach (var c in Model)
-            {
-                <div class="cam">
-                    <span>@c.Name</span>
-                    <div class=""></div>
+                    <button class="btn btn-sm btn-default" ng-click="appendDays(-1)"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                    <button class="btn btn-sm btn-default" ng-click="appendDays(1)"><span class="glyphicon glyphicon-chevron-right"></span></button>
                 </div>
-            }
-
+            </form>
         </div>
-
-        <div class="timeline-footer">
-            @for (int i = 0; i <= 24; i++)
-            {
-                <i style="left: @((i*100/24d).ToString("f", CultureInfo.InvariantCulture))%;"></i>
-                <b style="left: @((i*100/24d).ToString("f", CultureInfo.InvariantCulture))%;"><span>@i</span></b>
-            }
+        <div class="col-md-2 text-right zoom-btn-group">
+            <button class="btn btn-sm btn-default" ng-click="timelineZoom('out')"><span class="glyphicon glyphicon-zoom-out"></span></button>
+            <button class="btn btn-sm btn-default" ng-click="timelineZoom('in')"><span class="glyphicon glyphicon-zoom-in"></span></button>
+            <button class="btn btn-sm btn-default" ng-click="timelineZoom('restore')"><span class="glyphicon glyphicon-fullscreen"></span></button>
         </div>
     </div>
-</div>
+    <span class="debug-info ng-hide" ng-cloak ng-show="debug != false">
+        TIMELINE_SIZE={{timelineSize}}<br />
+        TIMELINE_SCROLL={{timelineScroll}}<br />
+        PINCH={{tlPinch}}<br />
+        PAN={{tlPan}}
+    </span>
+    <div class="row">
+        <div class="timeline-box" ng-class="{scroll: timelineSize > 100}">
+            <div class="timeline-box-scroll" style="width: {{timelineSize}}%" hm-pinch="timelinePinch($event)" hm-pan="timelinePan($event)" own-scroll-x="timelineScroll">
+                <div class="timeline-cams">
+                    <div class="timeline-header">
+                        <b style="left: {{calcPosition(cursorTime)}}%" id="pointer"><span>&#9660;</span></b>
+                    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-step-backward"></span> Minuta</button>
-        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-backward"></span> Snímek</button>
-        <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-backward"></span> Událost</button>
+                    @foreach (var c in Model)
+                    {
+                        <div class="cam" ng-init="initCamera('@c.Name')">
+                            <span>@c.Name</span>
+                            <div class="pickers">
+                                <i ng-repeat="i in cameras['@c.Name'].timeline" ng-cloak style="left: {{calcPosition(i.time)}}%" ng-click="showImage(i.time)"></i>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="timeline-footer">
+                    @for (int i = 0; i <= 24; i++)
+                    {
+                        <i style="left: @((i*100/24d).ToString("f", CultureInfo.InvariantCulture))%;"></i>
+                        <b style="left: @((i*100/24d).ToString("f", CultureInfo.InvariantCulture))%;"><span>@i</span></b>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4 text-center">
-        12:02:53
+
+    <div class="row nav-btn">
+        <div class="col-md-4 col-xs-4 col-sm-4">
+            <button class="btn btn-xs btn-default" ng-click="appendMinutes(-1)"><span class="glyphicon glyphicon-step-backward"></span> Minuta</button>
+            <button class="btn btn-xs btn-default" ng-click="navigateOverImage(-1)"><span class="glyphicon glyphicon-backward"></span> Snímek</button>
+            <button class="btn btn-xs btn-default ng-hide disabled"><span class="glyphicon glyphicon-backward"></span> Událost</button>
+        </div>
+        <div class="col-md-4 col-xs-4 col-sm-4 text-center">
+            <span class="ng-hide" ng-cloak ng-show="cursorTime != false" ng-click="openDebug()">{{cursorTime| amDateFormat:'HH:mm:ss'}}</span>
+        </div>
+        <div class="col-md-4 col-xs-4 col-sm-4 text-right">
+            <button class="btn btn-xs btn-default  ng-hide disabled">Událost <span class="glyphicon glyphicon-forward"></span></button>
+            <button class="btn btn-xs btn-default" ng-click="navigateOverImage(1)">Snímek <span class="glyphicon glyphicon-forward"></span></button>
+            <button class="btn btn-xs btn-default" ng-click="appendMinutes(1)">Minuta <span class="glyphicon glyphicon-step-forward"></span></button>
+        </div>
     </div>
-    <div class="col-md-4 text-right">
-        <button class="btn btn-xs btn-default">Událost <span class="glyphicon glyphicon-forward"></span></button>
-        <button class="btn btn-xs btn-default">Snímek <span class="glyphicon glyphicon-forward"></span></button>
-        <button class="btn btn-xs btn-default">Minuta <span class="glyphicon glyphicon-step-forward"></span></button>
+
+    <span class="debug-info ng-hide" ng-cloak ng-show="debug != false">
+        BOX_CLASS={{cameraBoxClass}}<br />
+        DATE={{cursorTime| amDateFormat:'YYYY-MM-DD HH:mm:ss'}}
+    </span>
+    <div class="row" id="image-box">
+        <div class="camera-image-box {{cam.style}}" ng-repeat="cam in cameras" ng-class="cameraBoxClass">
+            <img ng-src="{{imagePath(cam)}}" ng-class="cam.style" ng-click="openDetil(cam)" />
+            <span class="name" ng-cloak>{{cam.name}}</span>
+            <span class="debug-info" ng-cloak ng-show="debug != false">
+                IMG={{cam.image}}<br />
+                PATH={{imagePath(cam)}}<br />
+                AGE={{calcAge(cam.image.time)}}<br />
+                STYLE={{cam.style}}
+            </span>
+            <span class="image-navigation minute left" ng-click="appendMinutes(-1)"></span>
+            <span class="image-navigation frame left" ng-click="navigateOverImage(-1)"></span>
+            <span class="image-navigation minute right" ng-click="appendMinutes(1)"></span>
+            <span class="image-navigation frame right" ng-click="navigateOverImage(1)"></span>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="modal image-detail" ng-class="{show: detail != false}" ng-click="closeDetail()" >
+        
+        <img ng-src="{{imagePath(detail)}}" 
+             ng-class="detail.style" />
+
+        <span class="debug-info" ng-cloak ng-show="debug != false">
+            STYLE={{detail.style}}<br />
+            IMAGE={{detail.image}}<br />
+            PITCH={{imPinch}}<br />
+            PAN={{imPan}}<br />
+        </span>
     </div>
 </div>
-
-
-<div class="row">
-    kamery
-</div>
-
-
-
-

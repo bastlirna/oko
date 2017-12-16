@@ -14,9 +14,9 @@ namespace Oko.Web
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseUrls("http://0.0.0.0:80/")
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls("http://0.0.0.0:80/")
                 .Build();
 
             host.Run();

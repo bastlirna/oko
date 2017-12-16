@@ -44,6 +44,47 @@ namespace Oko.Logic.Core
             }
         }
 
+        public Stream GetImageStream(string cameraName, DateTime day, string imageName)
+        {
+            var dir = GetDayDir(cameraName, day);
+            
+            if (dir == null)
+            {
+                return null;
+            }
+
+            var path = Path.Combine(dir.FullName, imageName);
+
+            if (!File.Exists(path))
+            {
+                return null;
+            }
+            
+            return new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+        }
+
+        public ImageInfo GetImage(string cameraName, DateTime day, string imageName)
+        {
+            var dir = GetDayDir(cameraName, day);
+
+            if (dir == null)
+            {
+                return null;
+            }
+
+            var path = Path.Combine(dir.FullName, imageName);
+
+            if(!File.Exists(path))
+            {
+                return null;
+            }
+
+            return new ImageInfo
+            {
+                FullName = imageName
+            };            
+        }
+
         private DirectoryInfo GetDayDir(string cameraName, DateTime day)
         {
             // TODO check camera name

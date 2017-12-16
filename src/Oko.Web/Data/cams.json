@@ -1,5 +1,11 @@
 ﻿[
   {
+    "name": "test",
+    "description": "Test",
+    "room": "Test",
+    "zone": "test"
+  },
+  {
     "name": "b09-mucirna",
     "description": "Kamera v hlavní místnosti Mučírny",
     "room": "Blok 9/S127",

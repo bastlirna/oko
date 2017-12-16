@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/timeline.css" />
+        <link rel="stylesheet" href="~/lib/angular-moment-picker/dist/angular-moment-picker.css" />
+        
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -16,16 +18,25 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/timeline.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/angular-moment-picker/dist/angular-moment-picker.min.css" />
     </environment>
 </head>
-<body>
+<body ng-app="okoApp">
     
     @RenderBody()
     
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/angular/angular.min.js"></script>
+        <script src="~/lib/moment/moment.js"></script>
+        <script src="~/lib/angular-moment/angular-moment.js"></script>
+        <script src="~/lib/angular-moment-picker/dist/angular-moment-picker.js"></script>
+        <script src="~/lib/hammerjs/hammer.js"></script>
+        <script src="~/lib/angular-gestures/gestures.js"></script>
+
+        <script src="~/js/site.js"></script>
+        <script src="~/js/archive-ng.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -36,6 +47,19 @@
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"
+                asp-fallback-src="~/lib/angulare/angular.min.js"
+                asp-fallback-test="(function() { try { window.angular.module('ngRoute'); return true; } catch(e) { return false; } })()">
+        </script>
+
+        <script src="~/lib/moment/min/moment.min.js" asp-append-version="true"></script>
+        <script src="~/lib/angular-moment/angular-moment.min.js" asp-append-version="true"></script>
+        <script src="~/lib/angular-moment-picker/dist/angular-moment-picker.min.js" asp-append-version="true"></script>
+        <script src="~/lib/hammerjs/hammer.min.js" asp-append-version="true"></script>
+        <script src="~/lib/angular-gestures/gestures.min.js" asp-append-version="true"></script>
+        
+
+        <script src="~/js/archive-ng.min.js" asp-append-version="true"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

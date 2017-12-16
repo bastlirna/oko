@@ -1,14 +1,20 @@
-﻿
-.timeline-box {
+﻿[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
 
-  margin: 10px 14px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  font-size: 12px;
+.timeline-box {
+    margin: 10px 14px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 12px;    
+}
+
+.timeline-box.scroll {
+    overflow: auto;
 }
 
 .timeline-cams {
-  cursor: default;
+    cursor: default;
 }
 
 .timeline-cams .cam {
@@ -27,8 +33,19 @@
 }
 
 .timeline-cams .cam div {
-  margin: 0 10px 0 120px;
-  height: 5px;
+    position: relative;
+    margin: 0 10px 0 120px;
+    height: 30px;
+}
+
+.timeline-cams .cam div i {
+    position: absolute;
+    display: block;
+    width: 2px;
+    cursor: pointer;
+    background-color: #999;
+    top: 10px;
+    bottom: 5px;
 }
 
 .timeline-footer {
@@ -85,9 +102,214 @@
 }
 
 .timeline-header b span {
-  position: absolute;
-  display: block;
-  width: 20px;
-  left: -10px;
-  text-align: center;
+    position: absolute;
+    display: block;
+    width: 20px;
+    left: -9px;
+    text-align: center;
+}
+
+#image-box {
+    margin: 20px 0;
+}
+
+.camera-image-box img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.camera-image-box {
+    margin: 5px 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center; 
+}
+
+span.debug-info {
+    word-wrap: break-word;
+    text-align: left;
+    font-size: 8px;
+    line-height: 9px;
+}
+
+.debug .camera-image-box span.debug-info {
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    padding: 15px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.camera-image-box .name {
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    right: 15px;
+    bottom: 0;
+    padding: 2px 8px;
+}
+
+.camera-image-box.no-image img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.camera-image-box.loading img {
+    opacity: 0.1;    
+}
+
+.camera-image-box.loading{
+    background-image: url('../images/loading.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.camera-image-box.no-image img {
+    display:none;
+}
+
+.camera-image-box.no-image {
+    background-image: url('../images/no-image.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+.camera-image-box img.old {
+    opacity: 0.3;
+    cursor:inherit;
+    filter: grayscale(100%);
+}
+
+.camera-image-box.loading img, .camera-image-box.no-image img {
+    cursor: inherit;
+}
+
+.image-detail {
+    cursor: pointer;
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.image-navigation {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    width: 30%;
+    height: 40%;
+}
+
+.debug .image-navigation {
+    background-color: rgba(255,0,0,0.2);
+}
+
+.image-navigation.minute{
+    top:0;
+}
+
+.image-navigation.frame {
+    bottom:0;
+}
+
+.image-navigation.left {
+    left: 0;
+}
+
+.image-navigation.right {
+    right: 0;
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (max-width: 768px) {
+    .image-detail {
+        padding: 0px;
+        background-color: #000;
+    }
+
+    .image-detail img {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .day-input{
+        width: 40%;
+        display: inline-block;
+    }
+
+    .zoom-btn-group {
+        display: none;
+    }
+
+    .nav-btn .btn {
+        margin: 2px 0;
+        height: 30px;
+        width: 80px;
+        display: block;
+    }
+
+    .nav-btn .text-right {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .nav-btn .text-right button{
+        margin-left: auto;
+    }
+
+    .image-navigation {
+        display: block;        
+    }
+    
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .camera-image-box.col-md-2 {
+        height: 125px;
+    }
+    .camera-image-box.col-md-3 {
+        height: 198px;
+    }
+    .camera-image-box.col-md-4 {
+        height: 265px;
+    }
+    .camera-image-box.col-md-6 {
+        height: 408px;
+    }
+    .camera-image-box.col-md-12 {
+        height: 834px;
+    }
+
+    .camera-image-box.col-md-2.no-image{
+        background-size: 100px 100px;
+    }
+
+    .camera-image-box.col-md-3.no-image {
+        background-size: 150px 150px;
+    }
+    
+    
+}
+
+.debug .image-detail .debug-info {
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    padding: 15px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.image-detail img {
+    max-height: 100%;
+    max-width: 100%;
 }
