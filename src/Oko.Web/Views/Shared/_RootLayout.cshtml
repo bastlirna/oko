@@ -43,22 +43,17 @@
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
         </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"
-                asp-fallback-src="~/lib/angular/angular.min.js"
-                asp-fallback-test="(function() { try { window.angular.module('ngRoute'); return true; } catch(e) { return false; } })()">
-        </script>
 
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/lib/angular/angular.js" asp-append-version="true"></script>
         <script src="~/lib/moment/min/moment.min.js" asp-append-version="true"></script>
         <script src="~/lib/angular-moment/angular-moment.min.js" asp-append-version="true"></script>
         <script src="~/lib/angular-moment-picker/dist/angular-moment-picker.min.js" asp-append-version="true"></script>
         <script src="~/lib/hammerjs/hammer.min.js" asp-append-version="true"></script>
         <script src="~/lib/angular-gestures/gestures.min.js" asp-append-version="true"></script>
-        
+
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/archive-ng.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("scripts", required: false)
